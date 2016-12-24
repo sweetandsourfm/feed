@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "name": "sweet-and-sour-feed",
+  "version": "1.0.0",
+  "description": "podcast feed for sweet and sour",
+  "main": "gulpfile.js",
+  "author": "kt",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-env": "^1.1.4",
+    "babel-register": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.17.5",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-data": "^1.2.1",
+    "gulp-google-spreadsheets": "^1.2.0",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-nunjucks-html": "^2.0.0",
+    "gulp-nunjucks-render": "^2.0.0",
+    "gulp-open": "^1.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "json-loader": "^0.5.4",
+    "node-rss": "^1.0.5",
+    "viewport-units-buggyfill": "^0.6.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "load-json-file": "^2.0.0",
+    "node-rss": "^1.0.5"
+  }
+}
