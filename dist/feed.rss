@@ -16,7 +16,7 @@
     <itunes:explicit>clean</itunes:explicit>
     <copyright>2016 Sweet and Sour FM</copyright>
     <custom_namespaces/>
-    <atom:link href="http://sweetandsour.fm/feed.rss" rel="self" type="application/rss+xml"/>
+    <atom:link href="http://sweetandsour.fm/feed/feed.rss" rel="self" type="application/rss+xml"/>
     <lastBuildDate>Sat, 24 Dec 2016 20:35:07 GMT</lastBuildDate>
     <item>
       <title><![CDATA[Preview: Welcome to Sweet and Sour]]></title>

@@ -8,7 +8,7 @@ let title = 'Sweet and Sour'
 let link = 'http://sweetandsour.fm'
 let desc = 'A podcast about this Asian American life'
 let author = 'katie zhu and Nicole Zhu'
-let feedLink = 'http://sweetandsour.fm/feed.rss'
+let feedLink = 'http://sweetandsour.fm/feed/feed.rss'
 let options = {
   'language': 'en',
   'docs': 'https://cyber.harvard.edu/rss/rss.html',
