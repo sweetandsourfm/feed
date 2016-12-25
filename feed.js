@@ -57,29 +57,32 @@ loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
   for (var i = 0; i < episodeList.length; i++) {
     episode = episodeList[i]
 
-    feed.item({
-    title: episode.title,
-    description: episode.description,
-    url: episode.url,
-    date: episode.date,
-    guid: 'http://sweetandsour.fm/feed/assets/audio' + episode.guid,
-    enclosure: {
+    let feedItem = {
+      title: episode.title,
+      description: episode.description,
       url: episode.url,
-      length: episode.bytelength,
-      type: 'audio/m4a'
-    },
-    author: 'katie zhu and Nicole Zhu',
-    custom_elements: [
-        {'itunes:author': episode.itunesauthor},
-        {'itunes:subtitle': episode.itunessubtitle},
-        {'itunes:image': {
-          _attr: {
-            href: episode.itunesimage
-          }
-        }},
-        {'itunes:duration': episode.itunesduration }
-      ]
-    })
+      date: episode.date,
+      guid: 'http://sweetandsour.fm/feed/assets/audio' + episode.guid,
+      enclosure: {
+        url: episode.url,
+        file: './dist/assets/audio/' + episode.guid,
+        type: 'audio/m4a',
+        size: episode.bytelength
+      },
+      author: 'katie zhu and Nicole Zhu',
+      custom_elements: [
+          {'itunes:author': episode.itunesauthor},
+          {'itunes:subtitle': episode.itunessubtitle},
+          {'itunes:image': {
+            _attr: {
+              href: episode.itunesimage
+            }
+          }},
+          {'itunes:duration': episode.itunesduration }
+        ]
+    }
+
+    feed.item(feedItem)
   }
 
   var xml = feed.xml()
