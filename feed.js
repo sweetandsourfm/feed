@@ -9,7 +9,7 @@ let feedOptions = {
     description: 'A podcast about this Asian American life',
     feed_url: 'http://sweetandsour.fm/feed/episodes.rss',
     site_url: 'http://sweetandsour.fm',
-    image_url: 'http://sweetandsour.fm/assets/img/sweetandsour.png' ,
+    image_url: 'http://sweetandsour.fm/feed/assets/img/sweetandsour.png' ,
     docs: 'https://cyber.harvard.edu/rss/rss.html',
     managingEditor: 'katie zhu and Nicole Zhu',
     webMaster: 'katie zhu and Nicole Zhu',
@@ -31,7 +31,7 @@ let feedOptions = {
       ]},
       {'itunes:image': {
         _attr: {
-          href: 'http://sweetandsour.fm/assets/img/sweetandsour.png'
+          href: 'http://sweetandsour.fm/feed/assets/img/sweetandsour.png'
         }
       }},
       {'itunes:category': [
