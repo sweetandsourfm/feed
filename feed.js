@@ -62,7 +62,7 @@ loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
     description: episode.description,
     url: episode.url,
     date: episode.date,
-    guid: 'http://sweetandsour.fm/' + episode.guid,
+    guid: 'http://sweetandsour.fm/feed/assets/audio' + episode.guid,
     enclosure: {
       url: episode.url,
       length: episode.bytelength,
