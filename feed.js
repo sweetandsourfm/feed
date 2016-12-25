@@ -6,7 +6,7 @@ const loadJson  = require('load-json-file')
 
 let feedOptions = {
     title: 'Sweet and Sour',
-    description: 'A podcast about this Asian American life',
+    description: 'A show about this Asian American life',
     feed_url: 'http://sweetandsour.fm/feed/episodes.rss',
     site_url: 'http://sweetandsour.fm',
     image_url: 'http://sweetandsour.fm/feed/assets/img/sweetandsour.png' ,
