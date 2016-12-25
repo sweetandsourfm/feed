@@ -28,9 +28,8 @@ gulp.task('feed', function () {
       .on('error', function (err) { console.error(err) })
       .pipe(source('feed.js'))
       .pipe(buffer())
-      // .pipe(uglify())
       .pipe(gulp.dest('dist'))
-});
+})
 
 gulp.task('docs', ['server'], function () {
   gulp.src(__filename)
@@ -40,77 +39,4 @@ gulp.task('docs', ['server'], function () {
 gulp.task('fetch-data', function () {
   gulpSheets('1Yz_fEijAModseWuUnaW0a4_IqNGYksNzC6qx2SwLA2k')
     .pipe(gulp.dest('./dist/assets/data'))
-})
-
-gulp.task('server', ['fetch-data', 'less', 'nunjucks', 'js'], function () {
-  browserSync.init({
-    server: 'app'
-  })
-
-  gulp.watch('app/pages/*.nunjucks', ['nunjucks'])
-  gulp.watch('less/*.less', ['less'])
-  gulp.watch('js/custom/*.js', ['js'])
-  gulp.watch('app/*.html').on('change', browserSync.reload)
-})
-
-gulp.task('less', function () {
-  return gulp.src('./less/toolkit*')
-    .pipe(sourcemaps.init())
-    .pipe(less())
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('app/dist'))
-})
-
-gulp.task('less-min', ['less'], function () {
-  return gulp.src('./less/toolkit*')
-    .pipe(sourcemaps.init())
-    .pipe(less())
-    .pipe(minifyCSS())
-    .pipe(autoprefixer())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('app/dist'))
-})
-
-gulp.task('js', function () {
-  return gulp.src([
-      './js/bootstrap/transition.js',
-      './js/bootstrap/alert.js',
-      './js/bootstrap/affix.js',
-      './js/bootstrap/button.js',
-      './js/bootstrap/carousel.js',
-      './js/bootstrap/collapse.js',
-      './js/bootstrap/dropdown.js',
-      './js/bootstrap/modal.js',
-      './js/bootstrap/tooltip.js',
-      './js/bootstrap/popover.js',
-      './js/bootstrap/scrollspy.js',
-      './js/bootstrap/tab.js',
-      './js/custom/*'
-    ])
-    .pipe(concat('toolkit.js'))
-    .pipe(gulp.dest('app/dist'))
-})
-
-gulp.task('js-min', ['js'], function () {
-  return gulp.src('app/dist/*.js')
-    .pipe(uglify())
-    .pipe(rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('app/dist'))
-})
-
-gulp.task('nunjucks', function () {
-  return gulp.src('app/pages/**/*.+(html|nunjucks)')
-  .pipe(data(function() {
-    return require('./app/data/faq.json')
-  }))
-  .pipe(nunjucksRender({
-      path: ['app/templates']
-    }))
-  .pipe(gulp.dest('app'))
 })

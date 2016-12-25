@@ -28,7 +28,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "json-loader": "^0.5.4",
-    "node-rss": "^1.0.5",
+    "rss": "^1.2.1",
     "viewport-units-buggyfill": "^0.6.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",

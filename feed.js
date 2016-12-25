@@ -1,35 +1,53 @@
 'use strict'
 
 const fs        = require('fs')
-const rss       = require('node-rss')
+const Rss       = require('rss')
 const loadJson  = require('load-json-file')
 
-let title = 'Sweet and Sour'
-let link = 'http://sweetandsour.fm'
-let desc = 'A podcast about this Asian American life'
-let author = 'katie zhu and Nicole Zhu'
-let feedLink = 'http://sweetandsour.fm/feed/feed.rss'
-let options = {
-  'language': 'en',
-  'docs': 'https://cyber.harvard.edu/rss/rss.html',
-  'image': 'http://sweetandsour.fm/assets/img/sweetandsour.png',
-  'itunes:subtitle': 'A show about this Asian American life',
-  'itunes:author': 'katie zhu and Nicole Zhu',
-  'itunes:image': 'http://sweetandsour.fm/assets/img/sweetandsour.png',
-  'itunes:summary': 'Sweet and Sour is a podcast exploring different facets of Asian American life.',
-  'itunes:category': 'Society & Culture',
-  'itunes:owner': {
-    'itunes:name': 'katie zhu and Nicole Zhu',
-    'itunes:email': 'to.kzhu@gmail.com'
-  },
-  'itunes:explicit': 'clean',
-  'copyright': '2016 Sweet and Sour FM',
-  custom_namespaces: {
-    'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'
+let feedOptions = {
+    title: 'Sweet and Sour',
+    description: 'A podcast about this Asian American life',
+    feed_url: 'http://sweetandsour.fm/feed/episodes.rss',
+    site_url: 'http://sweetandsour.fm',
+    image_url: 'http://sweetandsour.fm/assets/img/sweetandsour.png' ,
+    docs: 'https://cyber.harvard.edu/rss/rss.html',
+    managingEditor: 'katie zhu and Nicole Zhu',
+    webMaster: 'katie zhu and Nicole Zhu',
+    copyright: '2016 Sweet and Sour FM',
+    language: 'en',
+    categories: ['Culture','Lifestyle','Asian America'],
+    pubDate: 'December 21, 2016 08:00:00 GMT',
+    ttl: '60',
+    custom_namespaces: {
+      'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd'
+    },
+    custom_elements: [
+      {'itunes:subtitle': 'A show about this Asian American life'},
+      {'itunes:author': 'katie zhu and Nicole Zhu'},
+      {'itunes:summary': 'Sweet and Sour is a show exploring different facets of Asian American life.'},
+      {'itunes:owner': [
+        {'itunes:name': 'katie zhu and Nicole Zhu'},
+        {'itunes:email': 'to.kzhu@gmail.com'}
+      ]},
+      {'itunes:image': {
+        _attr: {
+          href: 'http://sweetandsour.fm/assets/img/sweetandsour.png'
+        }
+      }},
+      {'itunes:category': [
+        {_attr: {
+          text: 'Society & Culture'
+        }},
+        {'itunes:category': {
+          _attr: {
+            text: 'Society & Culture'
+          }
+        }}
+      ]}
+    ]
   }
-}
 
-let feed = rss.createNewFeed(title, link, desc, author, feedLink, options)
+let feed = new Rss(feedOptions)
 
 loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
   let episodeList = episodeJson.rows
@@ -38,23 +56,26 @@ loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
   for (var i = 0; i < episodeList.length; i++) {
     episode = episodeList[i]
 
-    let itemTitle = episode.title
-    let itemLink = episode.url
-    let pubDate = episode.date
-    let description = episode.description
-    let fields = {
-      'itunes:author': episode.itunesauthor,
-      'itunes:subtitle': episode.itunessubtitle,
-      'itunes:image': episode.itunesimage,
-      'itunes:duration': episode.itunesduration
-    }
-
-    feed.addNewItem(itemTitle, itemLink, pubDate, description, fields)
+    feed.item({
+    title: episode.title,
+    description: episode.description,
+    url: 'http://sweetandsour.fm',
+    date: episode.date,
+    guid: `http://sweetandsour.fm/{$episode.guid}`,
+    custom_elements: [
+        {'itunes:author': episode.itunesauthor},
+        {'itunes:subtitle': episode.itunessubtitle},
+        {'itunes:image': {
+          _attr: {
+            href: episode.itunesimage
+          }
+        }},
+        {'itunes:duration': episode.itunesduration }
+      ]
+    })
   }
 
-  console.warn('feed with items!!', rss.getFeedXML(feed))
-  var xml = rss.getFeedXML(feed)
-  console.log(xml)
+  var xml = feed.xml()
 
-  fs.writeFileSync('feed.rss', xml, 'utf8')
+  fs.writeFileSync('episodes.rss', xml, 'utf8')
 })
