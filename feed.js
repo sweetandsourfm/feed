@@ -59,9 +59,14 @@ loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
     feed.item({
     title: episode.title,
     description: episode.description,
-    url: 'http://sweetandsour.fm',
+    url: episode.url,
     date: episode.date,
-    guid: `http://sweetandsour.fm/{$episode.guid}`,
+    guid: 'http://sweetandsour.fm/' + episode.guid,
+    enclosure: {
+      url: episode.url,
+      length: episode.bytelength,
+      type: 'audio/m4a'
+    },
     custom_elements: [
         {'itunes:author': episode.itunesauthor},
         {'itunes:subtitle': episode.itunessubtitle},
