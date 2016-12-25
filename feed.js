@@ -12,7 +12,7 @@ let feedOptions = {
     image_url: 'http://sweetandsour.fm/feed/assets/img/sweetandsour.png' ,
     docs: 'https://cyber.harvard.edu/rss/rss.html',
     managingEditor: 'katie zhu and Nicole Zhu',
-    webMaster: 'katie zhu and Nicole Zhu',
+    webMaster: 'to.kzhu@gmail.com',
     copyright: '2016 Sweet and Sour FM',
     language: 'en',
     categories: ['Culture','Lifestyle','Asian America'],
@@ -23,6 +23,7 @@ let feedOptions = {
     },
     custom_elements: [
       {'itunes:subtitle': 'A show about this Asian American life'},
+      {'itunes:explicit': 'clean'},
       {'itunes:author': 'katie zhu and Nicole Zhu'},
       {'itunes:summary': 'Sweet and Sour is a show exploring different facets of Asian American life.'},
       {'itunes:owner': [
@@ -40,7 +41,7 @@ let feedOptions = {
         }},
         {'itunes:category': {
           _attr: {
-            text: 'Society & Culture'
+            text: 'Personal Journals'
           }
         }}
       ]}
