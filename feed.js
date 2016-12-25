@@ -67,6 +67,7 @@ loadJson('./dist/assets/data/episodes.json').then(episodeJson => {
       length: episode.bytelength,
       type: 'audio/m4a'
     },
+    author: 'katie zhu and Nicole Zhu',
     custom_elements: [
         {'itunes:author': episode.itunesauthor},
         {'itunes:subtitle': episode.itunessubtitle},
