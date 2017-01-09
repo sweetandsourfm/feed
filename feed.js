@@ -23,7 +23,7 @@ let feedOptions = {
     },
     custom_elements: [
       {'itunes:subtitle': 'A show about this Asian American life'},
-      {'itunes:explicit': 'explicit'},
+      {'itunes:explicit': 'yes'},
       {'itunes:author': 'katie zhu and Nicole Zhu'},
       {'itunes:summary': 'Sweet and Sour is a show exploring different facets of Asian American life.'},
       {'itunes:owner': [
