@@ -1,2 +1,5 @@
-node_modules
-.babelrc
+node_modules/
+dist/
+.publish/
+.DS_Store
+*.sw*
