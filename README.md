@@ -13,4 +13,6 @@ Now copy `episodes.rss` to the dist folder; this is what actually gets deployed 
 
 Now commit, push changes to master.
 
-Deploy `dist/` folder as a subtree to github pages
+Deploy `dist/` folder as a subtree to github pages:
+
+`git subtree push --prefix dist origin gh-pages`
